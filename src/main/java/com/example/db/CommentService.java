@@ -71,7 +71,7 @@ public class CommentService {
                 slug);
 
         IndexRequest<Comment> commentReq = IndexRequest.of((id -> id
-                .index(COMMENTS)
+                .index(COMMENTS.getName())
                 .refresh(Refresh.WaitFor)
                 .document(comment)));
 
@@ -94,7 +94,7 @@ public class CommentService {
     public void deleteComment(String commentId, String username) throws IOException {
 
         DeleteByQueryResponse deleteComment = esClient.deleteByQuery(ss -> ss
-                .index(COMMENTS)
+                .index(COMMENTS.getName())
                 .waitForCompletion(true)
                 .refresh(true)
                 .query(q -> q
@@ -121,7 +121,7 @@ public class CommentService {
      */
     public CommentsDTO findAllCommentsByArticle(String slug, Optional<User> user) throws IOException {
         SearchResponse<Comment> commentsByArticle = esClient.search(s -> s
-                        .index(COMMENTS)
+                        .index(COMMENTS.getName())
                         .query(q -> q
                                 .term(t -> t
                                         .field("articleSlug.keyword")

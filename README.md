@@ -5,12 +5,12 @@
 ## Requirements:
 
 ```
-Git: 2.51.0
-Spring Boot : 3.5.5
-Java : 24
+Git: 2.51+
+Spring Boot : 3.5.10
+Java : 25
 Maven : 3.9 +
 ElasticSearch : 8.18.5
-Docker Desktop: Tested on 4.43.0
+Docker Desktop: Tested on 4.50.0
 ```
 
 ### Clone Github Repository

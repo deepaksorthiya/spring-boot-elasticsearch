@@ -83,7 +83,7 @@ public class UserService {
 
         // Checking uniqueness of both email and username
         SearchResponse<User> checkUser = esClient.search(ss -> ss
-                        .index(USERS)
+                        .index(USERS.getName())
                         .query(q -> q
                                 .bool(b -> b
                                         .should(s -> s
@@ -136,7 +136,7 @@ public class UserService {
 
         // Creating the index request
         IndexRequest<User> userReq = IndexRequest.of((id -> id
-                .index(USERS)
+                .index(USERS.getName())
                 .refresh(Refresh.WaitFor)
                 .document(newUser)));
 
@@ -156,7 +156,7 @@ public class UserService {
     public User authenticateUser(LoginDTO login) throws IOException {
 
         SearchResponse<User> getUser = esClient.search(ss -> ss
-                        .index(USERS)
+                        .index(USERS.getName())
                         .query(q -> q
                                 .term(t -> t
                                         .field("email.keyword")
@@ -200,7 +200,7 @@ public class UserService {
         }
 
         SearchResponse<User> getUser = esClient.search(ss -> ss
-                        .index(USERS)
+                        .index(USERS.getName())
                         .query(q -> q
                                 .term(t -> t
                                         .field("token.keyword")
@@ -260,7 +260,7 @@ public class UserService {
      */
     private void updateUser(String id, User user) throws IOException {
         UpdateResponse<User> upUser = esClient.update(up -> up
-                        .index(USERS)
+                        .index(USERS.getName())
                         .id(id)
                         .doc(user)
                 , User.class);
@@ -356,7 +356,7 @@ public class UserService {
     public UserIdPair findUserByUsername(String username) throws IOException {
         // Simple term query to match exactly the username string
         SearchResponse<User> getUser = esClient.search(ss -> ss
-                        .index(USERS)
+                        .index(USERS.getName())
                         .query(q -> q
                                 .term(t -> t
                                         .field("username.keyword")
@@ -377,7 +377,7 @@ public class UserService {
     private UserIdPair findUserByEmail(String email) throws IOException {
         // Simple term query to match exactly the email string
         SearchResponse<User> getUser = esClient.search(ss -> ss
-                        .index(USERS)
+                        .index(USERS.getName())
                         .query(q -> q
                                 .term(t -> t
                                         .field("email.keyword")

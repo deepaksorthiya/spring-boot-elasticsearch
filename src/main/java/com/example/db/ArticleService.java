@@ -69,7 +69,7 @@ public class ArticleService {
         Article article = new Article(articleDTO, slug, now, now, author);
 
         IndexRequest<Article> articleReq = IndexRequest.of((id -> id
-                .index(ARTICLES)
+                .index(ARTICLES.getName())
                 .refresh(Refresh.WaitFor)
                 .document(article)));
 
@@ -87,7 +87,7 @@ public class ArticleService {
     public ArticleIdPair findArticleBySlug(String slug) throws IOException {
 
         SearchResponse<Article> getArticle = esClient.search(ss -> ss
-                        .index(ARTICLES)
+                        .index(ARTICLES.getName())
                         .query(q -> q
                                 .term(t -> t
                                         .field("slug.keyword")
@@ -148,7 +148,7 @@ public class ArticleService {
      */
     private void updateArticle(String id, Article updatedArticle) throws IOException {
         UpdateResponse<Article> upArticle = esClient.update(up -> up
-                        .index(ARTICLES)
+                        .index(ARTICLES.getName())
                         .id(id)
                         .doc(updatedArticle)
                 , Article.class);
@@ -183,7 +183,7 @@ public class ArticleService {
         }
 
         DeleteByQueryResponse deleteArticle = esClient.deleteByQuery(d -> d
-                .index(ARTICLES)
+                .index(ARTICLES.getName())
                 .waitForCompletion(true)
                 .refresh(true)
                 .query(q -> q
@@ -198,7 +198,7 @@ public class ArticleService {
         // Delete every comment to the article, using a term query
         // that will match all comments with the same articleSlug
         DeleteByQueryResponse deleteCommentsByArticle = esClient.deleteByQuery(d -> d
-                .index(COMMENTS)
+                .index(COMMENTS.getName())
                 .waitForCompletion(true)
                 .refresh(true)
                 .query(q -> q
@@ -309,7 +309,7 @@ public class ArticleService {
         Query query = new Query.Builder().bool(b -> b.should(conditions)).build();
 
         SearchResponse<Article> getArticle = esClient.search(ss -> ss
-                        .index(ARTICLES)
+                        .index(ARTICLES.getName())
                         .size(limit) // how many results to return
                         .from(offset) // starting point
                         .query(query)
@@ -363,7 +363,7 @@ public class ArticleService {
                 .map(FieldValue::of).toList();
 
         SearchResponse<Article> articlesByAuthors = esClient.search(ss -> ss
-                        .index(ARTICLES)
+                        .index(ARTICLES.getName())
                         .query(q -> q
                                 .bool(b -> b
                                         .filter(f -> f
@@ -408,7 +408,7 @@ public class ArticleService {
         NamedValue<SortOrder> sort = new NamedValue<>("_count", SortOrder.Desc);
 
         SearchResponse<Aggregation> aggregateTags = esClient.search(s -> s
-                        .index(ARTICLES)
+                        .index(ARTICLES.getName())
                         .size(0) // this is needed avoid returning the search result, which is not necessary here
                         .aggregations("tags", agg -> agg
                                 .terms(ter -> ter

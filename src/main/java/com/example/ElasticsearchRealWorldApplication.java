@@ -27,9 +27,9 @@ public class ElasticsearchRealWorldApplication implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         // Creating the indexes
-        createSimpleIndex(elasticRestClient, USERS);
-        createIndexWithDateMapping(elasticRestClient, ARTICLES);
-        createIndexWithDateMapping(elasticRestClient, COMMENTS);
+        createSimpleIndex(elasticRestClient, USERS.getName());
+        createIndexWithDateMapping(elasticRestClient, ARTICLES.getName());
+        createIndexWithDateMapping(elasticRestClient, COMMENTS.getName());
     }
 
     /**

@@ -19,9 +19,18 @@
 
 package com.example.constant;
 
-public class Constants {
+public enum Constants {
+    ARTICLES("articles"),
+    USERS("users"),
+    COMMENTS("comments");
 
-    public static final String ARTICLES = "articles";
-    public static final String USERS = "users";
-    public static final String COMMENTS = "comments";
+    private final String name;
+
+    Constants(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return this.name;
+    }
 }
