@@ -1,7 +1,7 @@
 services:
   ################## ELASTICSEARCH ######################
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:8.18.5
+    image: docker.elastic.co/elasticsearch/elasticsearch:9.2.4
     container_name: elasticsearch-8.18.5
     environment:
       "discovery.type": "single-node"
