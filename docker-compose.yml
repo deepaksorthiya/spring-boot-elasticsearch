@@ -25,7 +25,7 @@ services:
       - elastic
   ################## KIBANA ############################
   kibana:
-    image: docker.elastic.co/kibana/kibana:8.18.5
+    image: docker.elastic.co/kibana/kibana:9.3.2
     container_name: kibana-8.18.5
     environment:
       XPACK_ENCRYPTEDSAVEDOBJECTS_ENCRYPTIONKEY: d1a66dfd-c4d3-4a0a-8290-2abcb83ab3aa
