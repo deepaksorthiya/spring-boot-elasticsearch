@@ -6,7 +6,7 @@
 
 ```
 Git: 2.51+
-Spring Boot : 3.5.10
+Spring Boot : 3.5.16
 Java : 25
 Maven : 3.9 +
 ElasticSearch : 8.18.5
