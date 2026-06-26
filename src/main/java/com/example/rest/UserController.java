@@ -39,7 +39,7 @@ public class UserController {
 
     private UserService service;
 
-    Logger logger = LoggerFactory.getLogger(UserController.class);
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     public UserController(UserService service) {

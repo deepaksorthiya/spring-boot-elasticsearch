@@ -51,7 +51,7 @@ public class ArticleController {
     private final UserService userService;
     private final CommentService commentService;
 
-    Logger logger = LoggerFactory.getLogger(UserController.class);
+    private static final Logger logger = LoggerFactory.getLogger(ArticleController.class);
 
     @Autowired
     public ArticleController(ArticleService articleService, UserService userService,
@@ -130,7 +130,7 @@ public class ArticleController {
     @PutMapping("/{slug}")
     public ResponseEntity<ArticleDTO> updateArticle(@RequestBody ArticleUpdateDTO req,
                                                     @PathVariable String slug, @RequestHeader(
-            "Authorization") String auth) throws IOException {
+                    "Authorization") String auth) throws IOException {
         UserIdPair userPair = userService.findUserByToken(auth);
         Author author = new Author(userPair.user(), false);
 

@@ -36,7 +36,7 @@ public class ProfileController {
 
     private UserService service;
 
-    Logger logger = LoggerFactory.getLogger(UserController.class);
+    private static final Logger logger = LoggerFactory.getLogger(ProfileController.class);
 
     @Autowired
     public ProfileController(UserService service) {

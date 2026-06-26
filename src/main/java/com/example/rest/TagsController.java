@@ -39,7 +39,7 @@ public class TagsController {
 
     private final ArticleService service;
 
-    Logger logger = LoggerFactory.getLogger(UserController.class);
+    private static final Logger logger = LoggerFactory.getLogger(TagsController.class);
 
     @Autowired
     public TagsController(ArticleService service) {

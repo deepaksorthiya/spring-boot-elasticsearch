@@ -407,7 +407,7 @@ public class ArticleService {
         // If alphabetical order is preferred, use "_key" instead
         NamedValue<SortOrder> sort = new NamedValue<>("_count", SortOrder.Desc);
 
-        SearchResponse<Aggregation> aggregateTags = esClient.search(s -> s
+        SearchResponse<Void> aggregateTags = esClient.search(s -> s
                         .index(ARTICLES.getName())
                         .size(0) // this is needed avoid returning the search result, which is not necessary here
                         .aggregations("tags", agg -> agg
@@ -415,7 +415,7 @@ public class ArticleService {
                                         .field("tagList.keyword")
                                         .order(sort))
                         ),
-                Aggregation.class
+                Void.class
         );
 
         return new TagsDTO(aggregateTags.aggregations().get("tags")
