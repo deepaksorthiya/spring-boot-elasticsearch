@@ -19,11 +19,10 @@
 
 package com.example.rest;
 
-import com.example.db.UserService;
 import com.example.document.user.Profile;
+import com.example.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,7 +37,6 @@ public class ProfileController {
 
     private static final Logger logger = LoggerFactory.getLogger(ProfileController.class);
 
-    @Autowired
     public ProfileController(UserService service) {
         this.service = service;
     }

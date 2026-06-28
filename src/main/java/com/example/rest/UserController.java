@@ -19,14 +19,13 @@
 
 package com.example.rest;
 
-import com.example.db.UserService;
 import com.example.document.user.LoginDTO;
 import com.example.document.user.RegisterDTO;
 import com.example.document.user.User;
 import com.example.document.user.UserDTO;
+import com.example.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,7 +40,6 @@ public class UserController {
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
-    @Autowired
     public UserController(UserService service) {
         this.service = service;
     }

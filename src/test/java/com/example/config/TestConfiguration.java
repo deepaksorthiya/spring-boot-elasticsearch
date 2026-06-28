@@ -1,4 +1,4 @@
-package com.example.db;
+package com.example.config;
 
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.test.context.DynamicPropertyRegistry;
@@ -8,7 +8,7 @@ import org.testcontainers.junit.jupiter.Container;
 
 import java.time.Duration;
 
-class TestConfiguration {
+public class TestConfiguration {
 
     private static final String ELASTICSEARCH_IMAGE = "docker.elastic.co/elasticsearch/elasticsearch:8.18.5";
 

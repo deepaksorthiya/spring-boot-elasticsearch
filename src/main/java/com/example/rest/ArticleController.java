@@ -19,9 +19,6 @@
 
 package com.example.rest;
 
-import com.example.db.ArticleService;
-import com.example.db.CommentService;
-import com.example.db.UserService;
 import com.example.document.article.*;
 import com.example.document.comment.Comment;
 import com.example.document.comment.CommentCreationDTO;
@@ -30,10 +27,12 @@ import com.example.document.comment.CommentsDTO;
 import com.example.document.exception.ResourceNotFoundException;
 import com.example.document.user.Author;
 import com.example.document.user.User;
+import com.example.service.ArticleService;
+import com.example.service.CommentService;
+import com.example.service.UserService;
 import com.example.utils.UserIdPair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -53,7 +52,6 @@ public class ArticleController {
 
     private static final Logger logger = LoggerFactory.getLogger(ArticleController.class);
 
-    @Autowired
     public ArticleController(ArticleService articleService, UserService userService,
                              CommentService commentService) {
         this.articleService = articleService;

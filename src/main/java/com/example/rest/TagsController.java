@@ -19,11 +19,10 @@
 
 package com.example.rest;
 
-import com.example.db.ArticleService;
 import com.example.document.article.TagsDTO;
+import com.example.service.ArticleService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,7 +40,6 @@ public class TagsController {
 
     private static final Logger logger = LoggerFactory.getLogger(TagsController.class);
 
-    @Autowired
     public TagsController(ArticleService service) {
         this.service = service;
     }

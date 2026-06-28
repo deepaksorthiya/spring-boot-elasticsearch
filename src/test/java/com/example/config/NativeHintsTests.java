@@ -13,7 +13,7 @@ import org.springframework.aot.hint.predicate.RuntimeHintsPredicates;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class NativeHintsTest {
+class NativeHintsTests {
 
     @Test
     void shouldRegisterHints() {
